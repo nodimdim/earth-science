@@ -44,7 +44,7 @@ THREEx.Planets.createEarth	= function(){
 	var geometry	= new THREE.SphereGeometry(0.75, 32, 32)
 	var material	= new THREE.MeshPhongMaterial();
     var hours = new Date().getHours()
-    if(hours > 6 && hours < 21){
+    if(hours > 6 && hours < 7){
       material.map = THREE.ImageUtils.loadTexture('day.jpg')
     }
     else{

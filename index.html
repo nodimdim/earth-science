@@ -91,13 +91,13 @@
 
   .scrolling-wrapper {
     height: 50vh;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
   }
   
   .card {
-      display: inline-block;
+      flex: 0 0 auto;
       height: 47vh; 
       width: 269px; 
       border: 2px solid rgba(66, 214, 202, 0.2);
@@ -114,13 +114,91 @@
     text-align: center;
     margin: 20px;
   }
+  
+  .card .card-description{
+    height: 32vh;
+    padding: 0px 10px;
+    color: white;
+    font-size: 1em;
+    text-align: left;
+    overflow: hidden;
+  }
+  .card .card-footer{
+    color: white;
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+  }
 </style>
 
 <body style='margin: 0px; background-color: #000000; overflow: hidden;'>
   <div id="control" style="position: absolute; height: 70vh; width: 100vw; margin-top: 10vh; background-color: rgba(66, 214, 202, 0.1);">
-    <div class="pretty-bar" style="position: relative; height: 62vh; margin: 4vh 0; padding: 0 10vw; overflow-y: auto">
+    <div id="menu" class="pretty-bar" style="position: relative; height: 62vh; margin: 4vh 0; padding: 0 10vw; overflow-y: auto">
       <h1 style="color: white">Earth Science</h1>
-      <!--
+      <div class="pretty-barh scrolling-wrapper">
+        <div class="card">
+          <div class="card-title">
+            Hydrosphere
+          </div>
+          <div class="card-description">
+            Earth science or geoscience is a widely embraced term for the fields of science related to the planet Earth. It is the branch of science dealing with the physical constitution of the earth and its atmosphere. Earth science is the study of our planet's physical characteristics, from earthquakes to raindrops, and floods to fossils. Earth science can be considered to be a branch of planetary science, but with a much older history. "Earth science" is a broad term that encompasses four main branches of study, each of which is further broken down into more specialized fields.
+          </div>
+          <div class="card-footer">
+            Click to Read More ..
+          </div>
+        </div>
+      
+          <div class="card">
+          <div class="card-title">
+            Lithosphere
+          </div>
+          <div class="card-description">
+            Earth science or geoscience is a widely embraced term for the fields of science related to the planet Earth. It is the branch of science dealing with the physical constitution of the earth and its atmosphere. Earth science is the study of our planet's physical characteristics, from earthquakes to raindrops, and floods to fossils. Earth science can be considered to be a branch of planetary science, but with a much older history. "Earth science" is a broad term that encompasses four main branches of study, each of which is further broken down into more specialized fields.
+          </div>
+          <div class="card-footer">
+            Click to Read More ..
+          </div>
+        </div>
+      
+          <div class="card">
+          <div class="card-title">
+            Atmosphere
+          </div>
+          <div class="card-description">
+            Earth science or geoscience is a widely embraced term for the fields of science related to the planet Earth. It is the branch of science dealing with the physical constitution of the earth and its atmosphere. Earth science is the study of our planet's physical characteristics, from earthquakes to raindrops, and floods to fossils. Earth science can be considered to be a branch of planetary science, but with a much older history. "Earth science" is a broad term that encompasses four main branches of study, each of which is further broken down into more specialized fields.
+          </div>
+          <div class="card-footer">
+            Click to Read More ..
+          </div>
+        </div>
+      
+        <div class="card">
+          <div class="card-title">
+             Biosphere
+          </div>
+          <div class="card-description">
+            Earth science or geoscience is a widely embraced term for the fields of science related to the planet Earth. It is the branch of science dealing with the physical constitution of the earth and its atmosphere. Earth science is the study of our planet's physical characteristics, from earthquakes to raindrops, and floods to fossils. Earth science can be considered to be a branch of planetary science, but with a much older history. "Earth science" is a broad term that encompasses four main branches of study, each of which is further broken down into more specialized fields.
+          </div>
+          <div class="card-footer">
+            Click to Read More ..
+          </div>
+        </div>
+        
+         <div class="card">
+          <div class="card-title">
+             Tecosphere
+          </div>
+          <div class="card-description">
+            Earth science or geoscience is a widely embraced term for the fields of science related to the planet Earth. It is the branch of science dealing with the physical constitution of the earth and its atmosphere. Earth science is the study of our planet's physical characteristics, from earthquakes to raindrops, and floods to fossils. Earth science can be considered to be a branch of planetary science, but with a much older history. "Earth science" is a broad term that encompasses four main branches of study, each of which is further broken down into more specialized fields.
+          </div>
+          <div class="card-footer">
+            Click to Read More ..
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="hydrosphere" class="pretty-bar" style="display: none; position: relative; height: 62vh; margin: 4vh 0; padding: 0 10vw; overflow-y: auto">
+      <h1 style="color: white">Hydrosphere</h1>
       <p style="color: white">Earth science or geoscience is a widely embraced term for the fields of science related to the planet Earth. It is the branch of science dealing with the physical constitution of the earth and its atmosphere. Earth science is the study of our planet's physical characteristics, from earthquakes to raindrops, and floods to fossils. Earth science can be considered to be a branch of planetary science, but with a much older history. "Earth science" is a broad term that encompasses four main branches of study, each of which is further broken down into more specialized fields. </p>
       <p style="color: white">
       There are both reductionist and holistic approaches to Earth sciences. It is also the study of the Earth and its neighbors in space. Some Earth scientists use their knowledge of the Earth to locate and develop energy and mineral resources. Others study the impact of human activity on Earth's environment, and design methods to protect the planet. Some use their knowledge about Earth processes such as volcanoes, earthquakes, and hurricanes to plan communities that will not expose people to these dangerous events.
@@ -128,35 +206,6 @@
       <p style="color: white">
       The Earth sciences can include the study of geology, the lithosphere, and the large-scale structure of the Earth's interior, as well as the atmosphere, hydrosphere, and biosphere. Typically, Earth scientists use tools from geography, chronology, physics, chemistry, biology, and mathematics to build a quantitative understanding of how the Earth works and evolves. Earth science affects our everyday lives. For example, meteorologists study the weather and watch for dangerous storms. Hydrologists study water and warn of floods. Seismologists study earthquakes and try to predict where they will strike. Geologists study rocks and help to locate useful minerals. Earth scientists mainly work "in the field" climbing mountains, exploring the seabed, crawling through caves, or wading in swamps. They measure and collect samples (such as rocks or river water), then they record their findings on charts and maps.
       </p>
-      -->
-      <div class="pretty-barh scrolling-wrapper">
-        <div class="card" style="color: white">
-          <div class="card-title">
-            Hydrosphere
-          </div>
-        </div>
-        <div class="card">
-           <div class="card-title">
-            Hydrosphere
-          </div>
-          
-        </div>
-         <div class="card">
-           <div class="card-title">
-            Hydrosphere
-          </div>
-        </div>
-         <div class="card">
-           <div class="card-title">
-            Hydrosphere
-          </div>
-        </div>
-         <div class="card">
-           <div class="card-title">
-            Hydrosphere
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <img id="globe" src="globe.png" style="height: 15vh; width: 15vh; position: absolute; left: 10px; bottom: 10px">
@@ -165,6 +214,11 @@
   <script>
     $('#globe').on('click', function(){
       $('#control').toggle('slow');
+    });
+    
+    $('.card').on('click', function(){
+      $('#menu').hide('slow');
+      $('#hydrosphere').show('slow');
     });
 	var renderer	= new THREE.WebGLRenderer({
 		antialias	: true
