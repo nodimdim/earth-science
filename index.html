@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<script src='three.min.js'></script>
+<script src='threex.planets.js'></script>
+<script src='threex.atmospherematerial.js'></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.0.min.js"
+  integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4="
+  crossorigin="anonymous"></script>
+<style> 
+  .sci-btn {
+    width: 500px;
+    height: 50px;
+    background-color: #42D6CA;
+    border: 5px solid #42D6CA;
+    transition: all 0.5s ease;
+  }
+  
+  .sci-btn:hover {
+    background-color: rgba(66, 214, 202, 0.7);
+    color: #fff;
+    border-radius: 10px;
+  }
+  .sci-btn:hover:before {
+    border-radius: 10px;
+    border: 2px #42D6CA solid;
+  }
+
+  @keyframes grow {
+    from {
+      transform: scale(0, 0);
+      opacity: 1;
+    }
+    to {
+      transform: scale(1.5, 1.5);
+      opacity: 0;
+    }
+  }
+
+  .pretty-bar::-webkit-scrollbar {
+    width: 3px;
+    background-color: #F5F5F5;
+  }
+  
+  .pretty-bar::-webkit-scrollbar-thumb {
+    background-color: gray;
+  }
+  
+  .pretty-bar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+  }
+  
+  
+  .pretty-barh::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .pretty-barh::-webkit-scrollbar-thumb {
+     display: none;
+  }
+  
+  .pretty-barh::-webkit-scrollbar-track {
+     display: none;
+  }
+  
+  
+  .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+  }
+
+  .slider:hover {
+      opacity: 1;
+  }
+
+  .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 10px;
+      height: 10px;
+      background: rgba(66, 214, 202, 1.0);
+      cursor: pointer;
+  }
+
+  .scrolling-wrapper {
+    height: 50vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+  
+  .card {
+      display: inline-block;
+      height: 47vh; 
+      width: 269px; 
+      border: 2px solid rgba(66, 214, 202, 0.2);
+      margin-right: 10px
+   }
+  
+   .card:hover {
+      background-color: rgba(66, 214, 202, 0.3);
+   }
+  
+  .card .card-title{
+    color: white;
+    font-size: 1.3em;
+    text-align: center;
+    margin: 20px;
+  }
+</style>
+
+<body style='margin: 0px; background-color: #000000; overflow: hidden;'>
+  <div id="control" style="position: absolute; height: 70vh; width: 100vw; margin-top: 10vh; background-color: rgba(66, 214, 202, 0.1);">
+    <div class="pretty-bar" style="position: relative; height: 62vh; margin: 4vh 0; padding: 0 10vw; overflow-y: auto">
+      <h1 style="color: white">Earth Science</h1>
+      <!--
+      <p style="color: white">Earth science or geoscience is a widely embraced term for the fields of science related to the planet Earth. It is the branch of science dealing with the physical constitution of the earth and its atmosphere. Earth science is the study of our planet's physical characteristics, from earthquakes to raindrops, and floods to fossils. Earth science can be considered to be a branch of planetary science, but with a much older history. "Earth science" is a broad term that encompasses four main branches of study, each of which is further broken down into more specialized fields. </p>
+      <p style="color: white">
+      There are both reductionist and holistic approaches to Earth sciences. It is also the study of the Earth and its neighbors in space. Some Earth scientists use their knowledge of the Earth to locate and develop energy and mineral resources. Others study the impact of human activity on Earth's environment, and design methods to protect the planet. Some use their knowledge about Earth processes such as volcanoes, earthquakes, and hurricanes to plan communities that will not expose people to these dangerous events.
+      </p>
+      <p style="color: white">
+      The Earth sciences can include the study of geology, the lithosphere, and the large-scale structure of the Earth's interior, as well as the atmosphere, hydrosphere, and biosphere. Typically, Earth scientists use tools from geography, chronology, physics, chemistry, biology, and mathematics to build a quantitative understanding of how the Earth works and evolves. Earth science affects our everyday lives. For example, meteorologists study the weather and watch for dangerous storms. Hydrologists study water and warn of floods. Seismologists study earthquakes and try to predict where they will strike. Geologists study rocks and help to locate useful minerals. Earth scientists mainly work "in the field" climbing mountains, exploring the seabed, crawling through caves, or wading in swamps. They measure and collect samples (such as rocks or river water), then they record their findings on charts and maps.
+      </p>
+      -->
+      <div class="pretty-barh scrolling-wrapper">
+        <div class="card" style="color: white">
+          <div class="card-title">
+            Hydrosphere
+          </div>
+        </div>
+        <div class="card">
+           <div class="card-title">
+            Hydrosphere
+          </div>
+          
+        </div>
+         <div class="card">
+           <div class="card-title">
+            Hydrosphere
+          </div>
+        </div>
+         <div class="card">
+           <div class="card-title">
+            Hydrosphere
+          </div>
+        </div>
+         <div class="card">
+           <div class="card-title">
+            Hydrosphere
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img id="globe" src="globe.png" style="height: 15vh; width: 15vh; position: absolute; left: 10px; bottom: 10px">
+  <h4 style="position: absolute; right: 15px; bottom: 13px; color: white">Earth Rotation</h4>
+  <input id="rot-val" type="range" value="5" class="slider" style="width: 25vh; position: absolute; right: 12px; bottom: 20px">
+  <script>
+    $('#globe').on('click', function(){
+      $('#control').toggle('slow');
+    });
+	var renderer	= new THREE.WebGLRenderer({
+		antialias	: true
+	});
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	document.body.appendChild( renderer.domElement );
+	renderer.shadowMapEnabled	= true
+	
+	var updateFcts	= [];
+	var scene	= new THREE.Scene();
+	var camera	= new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 100 );
+	camera.position.z = 2;
+
+	var light	= new THREE.AmbientLight( 0x888888 )
+	scene.add( light )
+    
+	// var light	= new THREE.DirectionalLight( 'white', 1)
+	// light.position.set(5,5,5)
+	// light.target.position.set( 0, 0, 0 )
+	// scene.add( light )
+
+	var light	= new THREE.DirectionalLight( 0xcccccc, 1 )
+    
+	light.position.set(5,5,5)
+    
+	scene.add( light )
+	light.castShadow	= true
+	light.shadowCameraNear	= 0.01
+	light.shadowCameraFar	= 15
+	light.shadowCameraFov	= 45
+
+	light.shadowCameraLeft	= -1
+	light.shadowCameraRight	=  1
+	light.shadowCameraTop	=  1
+	light.shadowCameraBottom= -1
+	// light.shadowCameraVisible	= true
+
+	light.shadowBias	= 0.001
+	light.shadowDarkness	= 0.2
+
+	light.shadowMapWidth	= 1024
+	light.shadowMapHeight	= 1024
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		add an object and make it move					//
+	//////////////////////////////////////////////////////////////////////////////////
+
+	// var datGUI	= new dat.GUI()
+	var glowColor	= new THREE.Color('#0e0e11')
+	var mesh	= THREEx.Planets.createEarth()
+	// var mesh	= THREEx.Planets.createMoon()
+	// var mesh	= THREEx.Planets.createSun()
+	// mesh.visible	= false
+    
+    var starSphere	= THREEx.Planets.createStarfield()
+	scene.add(starSphere)
+    
+	scene.add(mesh)
+    
+	var geometry	= new THREE.SphereGeometry(0.75, 32, 32)
+	geometry= mesh.geometry.clone()
+	/*
+    var material	= THREEx.createAtmosphereMaterial()
+    material.uniforms.glowColor.value	= glowColor
+	var mesh	= new THREE.Mesh(geometry, material );
+	mesh.scale.multiplyScalar(1.01);
+	scene.add( mesh );
+
+	// new THREEx.addAtmosphereMaterial2DatGui(material, datGUI)
+
+	var geometry	= new THREE.SphereGeometry(0.8, 32, 32)
+	geometry	= mesh.geometry.clone()
+	var material	= THREEx.createAtmosphereMaterial()
+	material.side	= THREE.BackSide
+	material.uniforms.coeficient.value	= 0.4
+	material.uniforms.power.value		= 4.0
+	material.uniforms.glowColor.value	= glowColor
+	var mesh	= new THREE.Mesh(geometry, material );
+	mesh.scale.multiplyScalar(1.2);
+	scene.add( mesh );
+  
+	new THREEx.addAtmosphereMaterial2DatGui(material, datGUI)
+    
+    */
+    
+	//////////////////////////////////////////////////////////////////////////////////
+	//		Camera Controls							//
+	//////////////////////////////////////////////////////////////////////////////////
+	var mouse	= {x : 0, y : 0}
+	document.addEventListener('mousemove', function(event){
+		mouse.x	= (event.clientX / window.innerWidth ) - 0.5
+		mouse.y	= (event.clientY / window.innerHeight) - 0.5
+	}, false)
+	updateFcts.push(function(delta, now){
+		camera.position.y += (mouse.y*5 - camera.position.y) * (delta*3)
+        var quaternion = new THREE.Quaternion();
+        quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0).normalize(), 0.001 + parseFloat(document.getElementById("rot-val").value) * .0001 );
+        camera.position.applyQuaternion(quaternion);
+		camera.lookAt( scene.position )
+	})
+
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		render the scene						//
+	//////////////////////////////////////////////////////////////////////////////////
+	updateFcts.push(function(){
+		renderer.render( scene, camera );		
+	})
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	//		loop runner							//
+	//////////////////////////////////////////////////////////////////////////////////
+	var lastTimeMsec= null
+	requestAnimationFrame(function animate(nowMsec){
+		// keep looping
+		requestAnimationFrame( animate );
+		// measure time
+		lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
+		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
+		lastTimeMsec	= nowMsec
+		// call each update function
+		updateFcts.forEach(function(updateFn){
+			updateFn(deltaMsec/1000, nowMsec/1000)
+		})
+	})
+</script></body>
